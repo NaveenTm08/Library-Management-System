@@ -10,6 +10,11 @@ const bookmarkBtns = document.querySelectorAll('.bookmark-btn');
 const loginForm = document.querySelector('.login-form');
 const passwordInput = document.querySelector('#password');
 const passwordToggle = document.querySelector('.password-toggle');
+const signupForm = document.querySelector('.signup-form');
+const signupPassword = document.querySelector('#signupPassword');
+const signupConfirmPassword = document.querySelector('#confirmPassword');
+const signupPasswordToggle = document.querySelector('#signupPasswordToggle');
+const signupConfirmPasswordToggle = document.querySelector('#confirmPasswordToggle');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeBookmarks();
     initializeBorrowButtons();
     initializeLogin();
+    initializeSignup();
 });
 
 // Carousel functionality
@@ -176,6 +182,61 @@ function initializeLogin() {
         passwordInput.type = isPasswordVisible ? 'password' : 'text';
         passwordToggle.querySelector('.material-icons').textContent = isPasswordVisible ? 'visibility' : 'visibility_off';
     });
+}
+
+// Signup functionality
+function initializeSignup() {
+    if (!signupForm) return;
+
+    signupForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fullName = signupForm.querySelector('#fullName')?.value?.trim();
+        const email = signupForm.querySelector('#signupEmail')?.value?.trim();
+        const phone = signupForm.querySelector('#phone')?.value?.trim();
+        const memberId = signupForm.querySelector('#memberId')?.value?.trim();
+        const password = signupPassword?.value || '';
+        const confirmPassword = signupConfirmPassword?.value || '';
+
+        if (!fullName || !email || !phone || !memberId || !password || !confirmPassword) {
+            alert('Please complete all fields to create your account.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return;
+        }
+
+        const createButton = signupForm.querySelector('.signup-btn');
+        createButton.textContent = 'Creating account...';
+        createButton.disabled = true;
+
+        setTimeout(() => {
+            createButton.textContent = 'Create Account';
+            createButton.disabled = false;
+            alert(`Account created for ${fullName}!`);
+            signupForm.reset();
+        }, 1000);
+    });
+
+    if (signupPasswordToggle) {
+        signupPasswordToggle.addEventListener('click', () => {
+            togglePasswordField(signupPassword, signupPasswordToggle);
+        });
+    }
+
+    if (signupConfirmPasswordToggle) {
+        signupConfirmPasswordToggle.addEventListener('click', () => {
+            togglePasswordField(signupConfirmPassword, signupConfirmPasswordToggle);
+        });
+    }
+}
+
+function togglePasswordField(input, toggleButton) {
+    if (!input || !toggleButton) return;
+    const isVisible = input.type === 'text';
+    input.type = isVisible ? 'password' : 'text';
+    toggleButton.querySelector('.material-icons').textContent = isVisible ? 'visibility' : 'visibility_off';
 }
 
 // Navigation link active state
