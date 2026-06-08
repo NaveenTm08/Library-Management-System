@@ -7,6 +7,9 @@ const applyFiltersBtn = document.querySelector('.btn-filter');
 const bookCards = document.querySelectorAll('.book-card');
 const borrowBtns = document.querySelectorAll('.btn-borrow');
 const bookmarkBtns = document.querySelectorAll('.bookmark-btn');
+const loginForm = document.querySelector('.login-form');
+const passwordInput = document.querySelector('#password');
+const passwordToggle = document.querySelector('.password-toggle');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeFilters();
     initializeBookmarks();
     initializeBorrowButtons();
+    initializeLogin();
 });
 
 // Carousel functionality
@@ -143,6 +147,34 @@ function initializeBorrowButtons() {
 
             console.log('Book borrowed');
         });
+    });
+}
+
+// Login functionality
+function initializeLogin() {
+    if (!loginForm || !passwordInput || !passwordToggle) return;
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = loginForm.querySelector('#email')?.value?.trim();
+        const password = passwordInput.value;
+
+        if (!email || !password) {
+            alert('Please enter your email and password.');
+            return;
+        }
+
+        loginForm.querySelector('.login-btn').textContent = 'Logging in...';
+        setTimeout(() => {
+            loginForm.querySelector('.login-btn').textContent = 'Login';
+            alert(`Welcome back, ${email}!`);
+        }, 900);
+    });
+
+    passwordToggle.addEventListener('click', () => {
+        const isPasswordVisible = passwordInput.type === 'text';
+        passwordInput.type = isPasswordVisible ? 'password' : 'text';
+        passwordToggle.querySelector('.material-icons').textContent = isPasswordVisible ? 'visibility' : 'visibility_off';
     });
 }
 

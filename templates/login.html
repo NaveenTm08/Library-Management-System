@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Library - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="login-page-body">
+    <main class="login-page">
+        <section class="login-panel">
+            <div class="login-brand">
+                <span class="material-icons brand-icon">auto_stories</span>
+                <div>
+                    <h1 class="login-brand-title">Nexus Library</h1>
+                    <p class="login-brand-subtitle">Empowering knowledge through technology</p>
+                </div>
+            </div>
+
+            <div class="login-card">
+                <div class="login-card-header">
+                    <h2>Welcome Back</h2>
+                    <p>Please enter your details to access your account.</p>
+                </div>
+
+                <form class="login-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">mail</span>
+                            <input id="email" type="email" name="email" placeholder="librarian@nexus.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <span class="material-icons">lock</span>
+                            <input id="password" type="password" name="password" placeholder="••••••••" required>
+                            <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                                <span class="material-icons">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-row space-between">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember" checked>
+                            <span class="checkbox-custom"></span>
+                            Remember Me
+                        </label>
+                        <a href="#" class="text-link">Forgot Password?</a>
+                    </div>
+
+                    <div class="form-row login-actions">
+                        <button type="submit" class="btn btn-primary login-btn">Login</button>
+                        <span class="login-separator">or</span>
+                        <a href="#" class="text-link">Create New Account</a>
+                    </div>
+                </form>
+            </div>
+
+            <footer class="login-footer">
+                <p>© 2026 Nexus Library Management System</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#">Terms of Service</a>
+                    <span>•</span>
+                    <a href="#">Help</a>
+                </div>
+            </footer>
+        </section>
+
+        <aside class="login-aside">
+            <div class="aside-hero">
+                <img src="https://thumbs.dreamstime.com/b/exploring-world-knowledge-vibrant-illustration-students-open-book-globe-captivating-depicts-group-standing-358713000.jpg" alt="Library Interior" class="aside-image">
+                <div class="aside-text">
+                    <h3>A World of Knowledge</h3>
+                    <p>Manage over 500,000 digital and physical assets with the industry-leading Nexus Library interface.</p>
+                </div>
+            </div>
+
+            <div class="aside-footer">
+                <div class="member-stack">
+                    <img src="https://thumbs.dreamstime.com/b/exploring-world-knowledge-vibrant-illustration-students-open-book-globe-captivating-depicts-group-standing-358713000.jpg" alt="User avatar">
+                    <img src="https://thumbs.dreamstime.com/b/exploring-world-knowledge-vibrant-illustration-students-open-book-globe-captivating-depicts-group-standing-358713000.jpg" alt="User avatar">
+                    <img src="https://thumbs.dreamstime.com/b/exploring-world-knowledge-vibrant-illustration-students-open-book-globe-captivating-depicts-group-standing-358713000.jpg" alt="User avatar">
+                    <img src="https://thumbs.dreamstime.com/b/exploring-world-knowledge-vibrant-illustration-students-open-book-globe-captivating-depicts-group-standing-358713000.jpg" alt="User avatar">
+                    <img src="https://thumbs.dreamstime.com/b/exploring-world-knowledge-vibrant-illustration-students-open-book-globe-captivating-depicts-group-standing-358713000.jpg" alt="User avatar">
+                </div>
+                <p class="member-text">Joined by 12,000+ members</p>
+            </div>
+        </aside>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
