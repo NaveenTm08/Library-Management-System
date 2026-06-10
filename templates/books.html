@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Library - Browse Books</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="books-page-body">
+    <!-- Navigation Bar -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-left">
+                <div class="logo">Nexus Library</div>
+                <div class="nav-links">
+                    <a href="home.html" class="nav-link">Home</a>
+                    <a href="books.html" class="nav-link active">Books</a>
+                    <a href="#" class="nav-link">My Books</a>
+                </div>
+            </div>
+            <div class="navbar-right">
+                <button class="icon-btn" title="notifications">
+                    <span class="material-icons">notifications</span>
+                </button>
+                <button class="icon-btn" title="search">
+                    <span class="material-icons">search</span>
+                </button>
+                <a href="#" class="user-profile">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="User profile" class="profile-img">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="books-page-container">
+        <!-- Sidebar with Filters -->
+        <aside class="books-sidebar">
+            <!-- Categories Filter -->
+            <div class="filter-section">
+                <label class="filter-section-title">Categories</label>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-tech" name="category" value="tech" checked>
+                    <label for="cat-tech">Tech</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-fiction" name="category" value="fiction" checked>
+                    <label for="cat-fiction">Fiction</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="cat-history" name="category" value="history">
+                    <label for="cat-history">History</label>
+                </div>
+            </div>
+
+            <!-- Availability Filter -->
+            <div class="filter-section">
+                <label class="filter-section-title">Availability</label>
+                <div class="filter-option">
+                    <input type="checkbox" id="avail-available" name="availability" value="available" checked>
+                    <label for="avail-available">Available now</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="avail-borrowed" name="availability" value="borrowed">
+                    <label for="avail-borrowed">Borrowed</label>
+                </div>
+            </div>
+
+            <!-- Author Filter -->
+            <div class="filter-section">
+                <label class="filter-section-title">Author</label>
+                <div class="filter-option">
+                    <input type="checkbox" id="author-asimov" name="author" value="isaac-asimov">
+                    <label for="author-asimov">Isaac Asimov</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="author-dick" name="author" value="philip-k-dick">
+                    <label for="author-dick">Philip K. Dick</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="author-clarke" name="author" value="arthur-c-clarke">
+                    <label for="author-clarke">Arthur C. Clarke</label>
+                </div>
+            </div>
+
+            <!-- Publication Year Filter -->
+            <div class="filter-section">
+                <label class="filter-section-title">Publication Year</label>
+                <div class="year-range-display">
+                    <span>1950</span>
+                    <span id="yearDisplay">2024</span>
+                </div>
+                <div class="publication-year-slider">
+                    <input type="range" id="yearSlider" min="1950" max="2024" value="2024" class="year-slider">
+                </div>
+            </div>
+
+            <!-- Apply Filters Button -->
+            <button class="btn-apply-filters" id="applyFiltersBtn">Apply Filters</button>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="books-main-content">
+            <!-- Search Results Header -->
+            <div class="search-results-header">
+                <div>
+                    <h1 class="search-results-title">Search results for 'Science Fiction'</h1>
+                    <p class="search-results-info">Showing 1-12 of 156 books found in the library</p>
+                </div>
+                <div class="results-controls">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="grid" title="Grid view">
+                            <span class="material-icons">dashboard</span>
+                        </button>
+                        <button class="view-btn" data-view="list" title="List view">
+                            <span class="material-icons">list</span>
+                        </button>
+                    </div>
+                    <select class="sort-dropdown">
+                        <option>Sort by</option>
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                        <option>Highest Rated</option>
+                        <option>Lowest Price</option>
+                        <option>Title (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Search Results Grid -->
+            <div class="search-results-grid" id="searchResultsGrid">
+                <!-- Book Result Cards -->
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Foundation by Isaac Asimov">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Foundation</h3>
+                        <p class="result-book-author">Isaac Asimov</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Ubik by Philip K. Dick">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Ubik</h3>
+                        <p class="result-book-author">Philip K. Dick</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Neuromancer by William Gibson">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Neuromancer</h3>
+                        <p class="result-book-author">William Gibson</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Dune by Frank Herbert">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Dune</h3>
+                        <p class="result-book-author">Frank Herbert</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="The Left Hand of Darkness by Ursula K. Le Guin">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">The Left Hand of Darkness</h3>
+                        <p class="result-book-author">Ursula K. Le Guin</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="The Three-Body Problem by Liu Cixin">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">The Three-Body Problem</h3>
+                        <p class="result-book-author">Liu Cixin</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Ender's Game by Orson Scott Card">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Ender's Game</h3>
+                        <p class="result-book-author">Orson Scott Card</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Hyperion by Dan Simmons">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Hyperion</h3>
+                        <p class="result-book-author">Dan Simmons</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="The Expanse Series">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Leviathan Wakes</h3>
+                        <p class="result-book-author">James S. A. Corey</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Snow Crash by Neal Stephenson">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Snow Crash</h3>
+                        <p class="result-book-author">Neal Stephenson</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Altered Carbon by Richard K. Morgan">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">Altered Carbon</h3>
+                        <p class="result-book-author">Richard K. Morgan</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-book-card">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="The Martian by Andy Weir">
+                    <div class="result-book-header">
+                        <span class="result-availability">$0</span>
+                    </div>
+                    <div class="result-book-info">
+                        <h3 class="result-book-title">The Martian</h3>
+                        <p class="result-book-author">Andy Weir</p>
+                        <div class="result-book-actions">
+                            <button class="btn-small btn-borrow-small">Borrow Now</button>
+                            <button class="btn-small btn-wishlist-small">Add Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

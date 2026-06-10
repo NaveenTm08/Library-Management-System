@@ -257,3 +257,98 @@ if (notificationBtn) {
     });
 }
 
+// Books Page Specific Functionality
+// Year Slider functionality
+const yearSlider = document.getElementById('yearSlider');
+const yearDisplay = document.getElementById('yearDisplay');
+
+if (yearSlider) {
+    yearSlider.addEventListener('input', (e) => {
+        yearDisplay.textContent = e.target.value;
+    });
+}
+
+// Apply Filters Button for Books Page
+const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+if (applyFiltersBtn) {
+    applyFiltersBtn.addEventListener('click', () => {
+        const selectedCategories = [];
+        const selectedAvailability = [];
+        const selectedAuthors = [];
+
+        document.querySelectorAll('input[name="category"]:checked').forEach(cb => {
+            selectedCategories.push(cb.value);
+        });
+        document.querySelectorAll('input[name="availability"]:checked').forEach(cb => {
+            selectedAvailability.push(cb.value);
+        });
+        document.querySelectorAll('input[name="author"]:checked').forEach(cb => {
+            selectedAuthors.push(cb.value);
+        });
+
+        console.log('Filters Applied:', {
+            categories: selectedCategories,
+            availability: selectedAvailability,
+            authors: selectedAuthors,
+            publicationYear: yearSlider.value
+        });
+
+        applyFiltersBtn.textContent = 'Filters Applied!';
+        applyFiltersBtn.style.backgroundColor = '#10b981';
+
+        setTimeout(() => {
+            applyFiltersBtn.textContent = 'Apply Filters';
+            applyFiltersBtn.style.backgroundColor = '';
+        }, 2000);
+    });
+}
+
+// View Toggle
+const viewBtns = document.querySelectorAll('.view-btn');
+viewBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        viewBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        console.log('View changed to:', btn.dataset.view);
+    });
+});
+
+// Borrow Button functionality for Books Page
+document.querySelectorAll('.btn-borrow-small').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const originalText = btn.textContent;
+        btn.textContent = 'Borrowed!';
+        btn.style.backgroundColor = '#10b981';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = '';
+            btn.disabled = false;
+        }, 2000);
+
+        console.log('Book borrowed');
+    });
+});
+
+// Wishlist Button functionality for Books Page
+document.querySelectorAll('.btn-wishlist-small').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        btn.classList.toggle('added-to-wishlist');
+
+        if (btn.classList.contains('added-to-wishlist')) {
+            btn.textContent = '✓ Added';
+            btn.style.backgroundColor = '#dbeafe';
+            btn.style.color = '#1e40af';
+        } else {
+            btn.textContent = 'Add Wishlist';
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+        }
+
+        console.log('Wishlist toggled');
+    });
+});
+
