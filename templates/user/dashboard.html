@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Library - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/dashboard.css' %}">
+</head>
+
+<body>
+    <div class="container-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="material-icons">school</span>
+                <div class="sidebar-header-text">
+                    <h3>Nexus Library</h3>
+                    <p>Access Pass</p>
+                </div>
+            </div>
+
+            <div class="member-badge">
+                <span class="material-icons">stars</span>
+                <div>
+                    <p>Status</p>
+                    <p><strong>Silver Member</strong></p>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <h4>Main</h4>
+                <a href="#" class="nav-item active">
+                    <span class="material-icons">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons">book</span>
+                    <span>My Borrowed Books</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons">person</span>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons">notifications</span>
+                    <span>Notifications</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <h4>Library</h4>
+                <a href="#" class="nav-item">
+                    <span class="material-icons">search</span>
+                    <span>Find a Book</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons">settings</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons">help</span>
+                    <span>Help</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content-area">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <div class="header-logo">Nexus Library</div>
+                    <div class="header-search">
+                        <span class="material-icons">search</span>
+                        <input type="text" placeholder="Search library (⌘K)">
+                    </div>
+                    <div class="header-actions">
+                        <button class="header-action-btn">
+                            <span class="material-icons">notifications</span>
+                        </button>
+                        <div class="profile-img">AJ</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="content">
+                <div class="welcome-section">
+                    <h1 class="welcome-title">Welcome Back, Alex Johnson</h1>
+                    <p class="welcome-subtitle">Your personal library insight for September 24, 2024.</p>
+                </div>
+
+                <div class="member-status">
+                    <span class="material-icons">stars</span>
+                    <p>You are a <strong>Silver Member</strong></p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon total">
+                                <span class="material-icons">library_books</span>
+                            </div>
+                            <div class="stat-label">
+                                <span class="status">Total</span>
+                                <span class="title">Books Borrowed</span>
+                            </div>
+                        </div>
+                        <div class="stat-value">12</div>
+                        <p class="stat-description">All time borrows</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon done">
+                                <span class="material-icons">assignment_return</span>
+                            </div>
+                            <div class="stat-label">
+                                <span class="status">Done</span>
+                                <span class="title">Books Returned</span>
+                            </div>
+                        </div>
+                        <div class="stat-value">8</div>
+                        <p class="stat-description">Successfully returned</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon active">
+                                <span class="material-icons">menu_book</span>
+                            </div>
+                            <div class="stat-label">
+                                <span class="status">Active</span>
+                                <span class="title">Current Loans</span>
+                            </div>
+                        </div>
+                        <div class="stat-value">4</div>
+                        <p class="stat-description">Currently reading</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon urgent">
+                                <span class="material-icons">event_busy</span>
+                            </div>
+                            <div class="stat-label">
+                                <span class="status">Urgent</span>
+                                <span class="title">Overdue Books</span>
+                            </div>
+                        </div>
+                        <div class="stat-value">0</div>
+                        <p class="stat-description">No overdue items</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <a href="#" class="action-btn">
+                        <span class="material-icons">search</span>
+                        <span>Search Books</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span class="material-icons">book</span>
+                        <span>My Borrowed</span>
+                    </a>
+                    <a href="#" class="action-btn">
+                        <span class="material-icons">category</span>
+                        <span>Categories</span>
+                    </a>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="content-grid">
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Recent Activity</h3>
+                            <a href="#" class="view-all-link">View All</a>
+                        </div>
+                        <div class="card-content">
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-action">Borrowed 'Deep Work'</p>
+                                    <p class="activity-time">2 days ago</p>
+                                </div>
+                                <span class="material-icons activity-icon">chevron_right</span>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-action">Returned 'Atomic Habits'</p>
+                                    <p class="activity-time">5 days ago</p>
+                                </div>
+                                <span class="material-icons activity-icon">chevron_right</span>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-info">
+                                    <p class="activity-action">Reserved 'The Great Gatsby'</p>
+                                    <p class="activity-time">1 week ago</p>
+                                </div>
+                                <span class="material-icons activity-icon">chevron_right</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Reads -->
+                    <div class="card">
+                        <div class="current-reads-header">
+                            <div class="current-reads-title">
+                                <h3>Current Reads</h3>
+                                <span class="book-count">2 Books</span>
+                            </div>
+                        </div>
+                        <div class="books-container">
+                            <div class="book-card">
+                                <div class="book-image">📚</div>
+                                <div class="book-info">
+                                    <p class="book-title">Deep Work</p>
+                                    <p class="book-author">Cal Newport</p>
+                                    <div class="progress-section">
+                                        <div class="progress-label">
+                                            <span>Progress</span>
+                                            <span>65%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill"></div>
+                                        </div>
+                                    </div>
+                                    <p class="due-date">Due in 5 days</p>
+                                </div>
+                            </div>
+
+                            <div class="book-card">
+                                <div class="book-image"
+                                    style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">📖</div>
+                                <div class="book-info">
+                                    <p class="book-title">Design Systems</p>
+                                    <p class="book-author">Alla Kholmatova</p>
+                                    <div class="progress-section">
+                                        <div class="progress-label">
+                                            <span>Progress</span>
+                                            <span>45%</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 45%;"></div>
+                                        </div>
+                                    </div>
+                                    <p class="due-date">Due in 12 days</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="renew-all-btn">Renew All Books</button>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h5>Nexus Library</h5>
+                        <p>© 2024 Nexus Library Management System. All rights reserved.</p>
+                    </div>
+                    <div class="footer-section">
+                        <div class="footer-links">
+                            <a href="#" class="footer-link">Contact</a>
+                            <a href="#" class="footer-link">About</a>
+                            <a href="#" class="footer-link">Privacy Policy</a>
+                            <a href="#" class="footer-link">Terms</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="{% static 'assets/dashboard.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Borrowed Books - Nexus Library</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/my_borrowed_books.css' %}">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">Nexus Library</div>
+            <ul class="nav-main">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#books">Books</a></li>
+                <li><a href="#my-books" class="active">My Books</a></li>
+            </ul>
+        </div>
+        <div class="search-box">
+            <span class="search-icon material-icons">search</span>
+            <input type="text" placeholder="Search catalog... (⌘K)">
+        </div>
+        <div class="header-right">
+            <button class="icon-btn" title="Notifications">
+                <span class="material-icons">notifications</span>
+            </button>
+            <div class="profile-icon" title="User Profile">U</div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="member-portal">
+                <div class="member-portal-header">
+                    <div class="member-portal-icon">
+                        <span class="material-icons">person</span>
+                    </div>
+                    <div>
+                        <div class="member-portal-title">Member Portal</div>
+                        <div class="member-portal-name">Nexus Library Access</div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li><a href="#dashboard">
+                    <span class="material-icons">dashboard</span>
+                    Dashboard
+                </a></li>
+                <li><a href="#my-books" class="active">
+                    <span class="material-icons">book</span>
+                    My Borrowed Books
+                </a></li>
+                <li><a href="#profile">
+                    <span class="material-icons">person</span>
+                    Profile
+                </a></li>
+                <li><a href="#notifications">
+                    <span class="material-icons">notifications</span>
+                    Notifications
+                </a></li>
+            </ul>
+
+            <button class="find-book-btn">
+                <span class="material-icons">search</span>
+                Find a Book
+            </button>
+
+            <ul class="sidebar-nav">
+                <li><a href="#settings">
+                    <span class="material-icons">settings</span>
+                    Settings
+                </a></li>
+                <li><a href="#help">
+                    <span class="material-icons">help</span>
+                    Help
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">My Borrowed Books</h1>
+                <p class="page-description">Manage your active loans, track return validity, and request extensions for your library materials.</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon total">
+                        <span class="material-icons">library_books</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Borrowed</h3>
+                        <div class="stat-value">12</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon active">
+                        <span class="material-icons">check_circle</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Active</h3>
+                        <div class="stat-value">3</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon returned">
+                        <span class="material-icons">history</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Returned</h3>
+                        <div class="stat-value">9</div>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon overdue">
+                        <span class="material-icons">warning</span>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Overdue</h3>
+                        <div class="stat-value">1</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Loans Section -->
+            <div class="loans-section">
+                <div class="loans-header">
+                    <h2 class="loans-title">Active Loans</h2>
+                    <div class="loans-controls">
+                        <button class="control-btn">
+                            <span class="material-icons">filter_list</span>
+                            Filter
+                        </button>
+                        <button class="control-btn">
+                            <span class="material-icons">sort</span>
+                            Sort
+                        </button>
+                    </div>
+                </div>
+
+                <div class="book-cards">
+                    <!-- Book Card 1 -->
+                    <div class="book-card">
+                        <div class="book-cover">📘</div>
+                        <div class="book-info">
+                            <div class="book-header">
+                                <div>
+                                    <div class="book-title">Atomic Habits</div>
+                                    <div class="book-author">James Clear</div>
+                                </div>
+                                <span class="status-badge active">ACTIVE</span>
+                            </div>
+                            <div class="book-dates">
+                                <div class="date-item">
+                                    <div class="date-label">Borrow Date</div>
+                                    <div class="date-value">01 Jun 2026</div>
+                                </div>
+                                <div class="date-item">
+                                    <div class="date-label">Due Date</div>
+                                    <div class="date-value">15 Jun 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-actions">
+                            <div class="book-progress">
+                                <div class="progress-text">9 Days Remaining</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                                <div class="progress-percentage">80%</div>
+                            </div>
+                            <button class="action-btn primary">Renew Book</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Book Card 2 -->
+                    <div class="book-card">
+                        <div class="book-cover">📗</div>
+                        <div class="book-info">
+                            <div class="book-header">
+                                <div>
+                                    <div class="book-title">The Alchemist</div>
+                                    <div class="book-author">Paulo Coelho</div>
+                                </div>
+                                <span class="status-badge due-soon">DUE SOON</span>
+                            </div>
+                            <div class="book-dates">
+                                <div class="date-item">
+                                    <div class="date-label">Borrow Date</div>
+                                    <div class="date-value">01 Jun 2026</div>
+                                </div>
+                                <div class="date-item">
+                                    <div class="date-label">Due Date</div>
+                                    <div class="date-value">15 Jun 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-actions">
+                            <div class="book-progress">
+                                <div class="progress-text">3 Days Remaining</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%"></div>
+                                </div>
+                                <div class="progress-percentage">30%</div>
+                            </div>
+                            <button class="action-btn primary">Renew Book</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Book Card 3 -->
+                    <div class="book-card">
+                        <div class="book-cover">📕</div>
+                        <div class="book-info">
+                            <div class="book-header">
+                                <div>
+                                    <div class="book-title">Dune</div>
+                                    <div class="book-author">Frank Herbert</div>
+                                </div>
+                                <span class="status-badge overdue">OVERDUE</span>
+                            </div>
+                            <div class="book-dates">
+                                <div class="date-item">
+                                    <div class="date-label">Borrow Date</div>
+                                    <div class="date-value">15 May 2026</div>
+                                </div>
+                                <div class="date-item">
+                                    <div class="date-label">Due Date</div>
+                                    <div class="date-value">05 Jun 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-actions">
+                            <div class="book-progress">
+                                <div class="progress-text">Overdue by 2 days</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <div class="progress-percentage">0%</div>
+                            </div>
+                            <button class="action-btn danger">Return Request</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="view-history-btn">
+                    View Borrowing History
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-about">
+                        <h4>Nexus Library</h4>
+                        <p>© 2024 Nexus Library Management System</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#contact">Contact</a>
+                        <a href="#about">About</a>
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms</a>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="assets/my_borrowed_books.js"></script>
+</body>
+</html>
