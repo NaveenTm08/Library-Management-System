@@ -1,10 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 def dashboard(request):
-    return render(request,"user/dashboard.html")
+    if request.user.is_authenticated:
+        return render(request,"user/dashboard.html")
+    else:
+        return redirect("/")
 def books(request):
     return render(request,"user/books.html")
 def borrowedbooks(request):
-    return render(request,"user/borrowedbooks.html")
-
+    if request.user.is_authenticated:
+        return render(request,"user/borrowedbooks.html")
+    else:
+        return redirect("/")
+    # return render(request,"user/borrowedbooks.html")

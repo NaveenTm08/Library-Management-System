@@ -14,6 +14,8 @@
 
 <body>
     <div class="container-wrapper">
+        {% csrf_token %}
+
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -52,7 +54,7 @@
                 </a>
             </div>
 
-            <div class="nav-section">
+            <div class="nav-section" >
                 <h4>Library</h4>
                 <a href="#" class="nav-item">
                     <span class="material-icons">search</span>
@@ -61,6 +63,10 @@
                 <a href="#" class="nav-item">
                     <span class="material-icons">settings</span>
                     <span>Settings</span>
+                </a>
+                <a href="{% url 'logout' %}" class="nav-item">
+                    <span class="material-icons">logout</span>
+                    <span>Logout</span>
                 </a>
                 <a href="#" class="nav-item">
                     <span class="material-icons">help</span>
@@ -91,7 +97,7 @@
             <!-- Main Content -->
             <main class="content">
                 <div class="welcome-section">
-                    <h1 class="welcome-title">Welcome Back, Alex Johnson</h1>
+                    <h1 class="welcome-title">Welcome Back, {{user.first_name|title}}</h1>
                     <p class="welcome-subtitle">Your personal library insight for September 24, 2024.</p>
                 </div>
 
