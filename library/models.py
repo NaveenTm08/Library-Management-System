@@ -18,6 +18,7 @@ class Book(models.Model):
     description = models.TextField()
     stock = models.IntegerField()
     Shelf = models.CharField(max_length=50)
+    status = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

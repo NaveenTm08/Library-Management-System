@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,27 +9,33 @@
     <link rel="stylesheet" href="{% static 'assets/style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+</style>
+
 <body>
     <!-- Navigation Bar -->
     <header class="header">
         <nav class="navbar">
+            <a href="/">
             <div class="navbar-left">
                 <div class="logo">Nexus Library</div>
                 <div class="nav-links">
-                    <a href="/" class="nav-link active">Home</a>
-                    <a href="/users/books/" class="nav-link">Books</a>
-                    <a href="/users/borrowedbooks/" class="nav-link">My Books</a>
+                    
                 </div>
-            </div>
+            </div></a>
             <div class="navbar-right">
                 <button class="icon-btn" title="notifications">
                     <span class="material-icons">notifications</span>
                 </button>
                 <a href="login/"><button class="icon-btn" title="person">
-                    <span class="material-icons">person</span>
-                </button></a>
+                        <span class="material-icons">person</span>
+                    </button></a>
                 <a href="/users/dashboard/" class="user-profile">
-                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="User profile" class="profile-img">
+                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800"
+                        alt="User profile" class="profile-img">
                 </a>
             </div>
         </nav>
@@ -38,13 +45,15 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Hero image" class="hero-image">
+                <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800"
+                    alt="Hero image" class="hero-image">
                 <div class="hero-text">
                     <h1 class="hero-title">Unlock a World of Knowledge</h1>
-                    <p class="hero-description">Access over 25,000 titles from classical literature to the latest technical journals. Empower your learning journey with Nexus Library.</p>
+                    <p class="hero-description">Access over 25,000 titles from classical literature to the latest
+                        technical journals. Empower your learning journey with Nexus Library.</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">Browse Collection</a>
-                        <a href="#" class="btn btn-secondary">Join Library</a>
+                        <a href="#browse" class="btn btn-primary">Browse Collection</a>
+                        <a href="login/" class="btn btn-secondary">Join Library</a>
                     </div>
                 </div>
             </div>
@@ -74,35 +83,7 @@
             </div>
         </section>
 
-        <!-- Search and Filter Section -->
-        <section class="search-filter">
-            <div class="search-bar">
-                <span class="material-icons">search</span>
-                <input type="text" placeholder="Search by title, author, or ISBN">
-                <span class="shortcut">⌘K</span>
-            </div>
-            <div class="filters">
-                <div class="filter-group">
-                    <label class="filter-label">CATEGORY</label>
-                    <select class="filter-select">
-                        <option>All Categories</option>
-                        <option>Science Fiction</option>
-                        <option>Philosophy</option>
-                        <option>Productivity</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label class="filter-label">AVAILABILITY</label>
-                    <select class="filter-select">
-                        <option>Any Status</option>
-                        <option>Available Now</option>
-                        <option>Reserved</option>
-                    </select>
-                </div>
-                <button class="btn btn-filter">Apply Filters</button>
-            </div>
-        </section>
-
+       
         <!-- Trending Section -->
         <section class="trending">
             <div class="trending-header">
@@ -120,53 +101,58 @@
                 </div>
             </div>
             <div class="trending-carousel">
+                {% for i in trendingbooks%}
                 <div class="book-card trending-card">
                     <div class="book-image-wrapper">
-                        <img src="data:image/jpeg;base64,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" alt="Trending Book">
-                        <span class="material-icons play-icon">play_arrow</span>
+                        <img src="{{ i.image.url }}" alt="Trending Book" style="height:250px;">
+
                     </div>
-                    <h3 class="book-title">Future Cities</h3>
-                    <p class="book-author">Urban Planning</p>
+                    <h3 class="book-title">{{i.title}}</h3>
+                    <p class="book-author">{{i.author}}</p>
                 </div>
-                <div class="book-card trending-card">
-                    <div class="book-image-wrapper">
-                        <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Trending Book">
-                        <span class="material-icons play-icon">play_arrow</span>
-                    </div>
-                    <h3 class="book-title">Future Cities</h3>
-                    <p class="book-author">Urban Planning</p>
-                </div>
-                <div class="book-card trending-card">
-                    <div class="book-image-wrapper">
-                        <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Trending Book">
-                        <span class="material-icons play-icon">play_arrow</span>
-                    </div>
-                    <h3 class="book-title">Future Cities</h3>
-                    <p class="book-author">Urban Planning</p>
-                </div>
-                <div class="book-card trending-card">
-                    <div class="book-image-wrapper">
-                        <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Trending Book">
-                        <span class="material-icons play-icon">play_arrow</span>
-                    </div>
-                    <h3 class="book-title">Future Cities</h3>
-                    <p class="book-author">Urban Planning</p>
-                </div>
-                <div class="book-card trending-card">
-                    <div class="book-image-wrapper">
-                        <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Trending Book">
-                        <span class="material-icons play-icon">play_arrow</span>
-                    </div>
-                    <h3 class="book-title">Future Cities</h3>
-                    <p class="book-author">Urban Planning</p>
-                </div>
+                {% endfor %}
+
+
             </div>
         </section>
+
+         <!-- Search and Filter Section -->
+        <form action="" method="get" id="browse">
+            <section class="search-filter">
+                <div class="search-bar">
+                    <span class="material-icons">search</span>
+                    <input type="text" placeholder="Search by title, author" name="q">
+                    <span class="shortcut">⌘K</span>
+                </div>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label class="filter-label">CATEGORY</label>
+                        <select class="filter-select" name="category">
+                            <option value="all">All Categories</option>
+                            {% for i in catgeries %}
+                            <option value="{{i.name}}">{{ i.name }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-label">AVAILABILITY</label>
+                        <select class="filter-select" name="avilable">
+                            <option value="all">Any Status</option>
+                            <option value="available">Available Now</option>
+                            <option value="reserved">Reserved</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-filter">Apply Filters</button>
+                </div>
+            </section>
+        </form>
 
         <!-- All Books Section -->
         <section class="all-books">
             <h2 class="all-books-heading">All Books</h2>
             <div class="books-grid">
+                {% for i in allbooks%}
                 <div class="book-card">
                     <div class="book-header">
                         <span class="availability-badge">Available</span>
@@ -174,51 +160,30 @@
                             <span class="material-icons">bookmark</span>
                         </button>
                     </div>
-                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Atomic Habits">
-                    <h3 class="book-title">Atomic Habits</h3>
-                    <p class="book-author">James Clear</p>
-                    <button class="btn btn-borrow">Borrow</button>
+                    <img src="{{i.image.url}}" alt="Atomic Habits" style="height: 250px;">
+                    <h3 class="book-title">{{i.title|truncatechars:17}}</h3>
+                    <p class="book-author">{{i.author}}</p>
+                    <button class="btn btn-borrow">Details</button>
                 </div>
-                <div class="book-card">
-                    <div class="book-header">
-                        <span class="availability-badge">Available</span>
-                        <button class="bookmark-btn" title="bookmark">
-                            <span class="material-icons">bookmark</span>
-                        </button>
-                    </div>
-                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="The Alchemist">
-                    <h3 class="book-title">The Alchemist</h3>
-                    <p class="book-author">Paulo Coelho</p>
-                    <button class="btn btn-borrow">Borrow</button>
-                </div>
-                <div class="book-card">
-                    <div class="book-header">
-                        <span class="availability-badge">Available</span>
-                        <button class="bookmark-btn" title="bookmark">
-                            <span class="material-icons">bookmark</span>
-                        </button>
-                    </div>
-                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Dune">
-                    <h3 class="book-title">Dune</h3>
-                    <p class="book-author">Frank Herbert</p>
-                    <button class="btn btn-borrow">Borrow</button>
-                </div>
-                <div class="book-card">
-                    <div class="book-header">
-                        <span class="availability-badge">Available</span>
-                        <button class="bookmark-btn" title="bookmark">
-                            <span class="material-icons">bookmark</span>
-                        </button>
-                    </div>
-                    <img src="https://img.pikbest.com/png-images/20241016/creative-book-logo-vector-design_10968791.png!bw800" alt="Thinking, Fast and Slow">
-                    <h3 class="book-title">Thinking, Fast and Slow</h3>
-                    <p class="book-author">Daniel Kahneman</p>
-                    <button class="btn btn-borrow">Borrow</button>
-                </div>
+                {% endfor %}
+
             </div>
         </section>
     </main>
+    <script>
+        window.addEventListener("load", () => {
+            const savedScrollY = localStorage.getItem("pageScrollY");
+            
+            window.scrollTo(0, parseInt(savedScrollY));
+           
+        });
 
+        
+        window.addEventListener("scroll", () => {
+            localStorage.setItem("pageScrollY", window.scrollY);
+        });
+    </script>
     <script src="{% static 'assets/script.js' %}"></script>
 </body>
+
 </html>

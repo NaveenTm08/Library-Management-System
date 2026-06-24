@@ -1,11 +1,27 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from accounts.models import UserDetails
+from django.db.models import Q
 from django.contrib.auth import authenticate,login as account_login,logout
+from library.models import Book, BookCategory
+
 
 # Create your views here.
 def home(request):
-    return render(request,"user/home.html")
+    trendingbooks = Book.objects.all().order_by('-id')[:10]
+    allbooks = Book.objects.all().order_by('?')
+    catgeries = BookCategory.objects.all()
+
+    q = request.GET.get("q")
+    category = request.GET.get("category")
+    # available = request.GET.get("available")
+    if category :
+        if category=="all":
+            allbooks = Book.objects.filter(Q(title__icontains=q) | Q(author__icontains=q) | Q(description__icontains=q)|Q(category__name__icontains=q))
+        else:
+            allbooks = Book.objects.filter(category__name=category).filter(Q(title__icontains=q) | Q(author__icontains=q) | Q(description__icontains=q)|Q(category__name__icontains=q))
+
+    return render(request,"user/home.html",{"trendingbooks":trendingbooks, "allbooks":allbooks,"catgeries":catgeries})
 
 def login(request):
     if request.method == "POST":
