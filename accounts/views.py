@@ -8,6 +8,8 @@ from library.models import Book, BookCategory
 
 # Create your views here.
 def home(request):
+    if request.user.is_authenticated:
+        return redirect("dashboard")
     trendingbooks = Book.objects.all().order_by('-id')[:10]
     allbooks = Book.objects.all().order_by('?')
     catgeries = BookCategory.objects.all()

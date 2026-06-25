@@ -67,15 +67,15 @@ function initializeButtons() {
     });
     
     // Action buttons
-    const actionButtons = document.querySelectorAll('.action-btn');
-    actionButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const label = this.querySelector('span:last-child').textContent;
-            console.log(`Action clicked: ${label}`);
-        });
-    });
-}
+//     const actionButtons = document.querySelectorAll('.action-btn');
+//     actionButtons.forEach(btn => {
+//         btn.addEventListener('click', function(e) {
+//             // e.preventDefault();
+//             const label = this.querySelector('span:last-child').textContent;
+//             console.log(`Action clicked: ${label}`);
+//         });
+//     });
+// }
 
 // Notification button
 const notificationBtn = document.querySelector('.header-action-btn');
