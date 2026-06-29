@@ -37,33 +37,29 @@
 
     <main class="books-page-container">
         <!-- Sidebar with Filters -->
+         <form action="" method="get">
         <aside class="books-sidebar">
             <!-- Categories Filter -->
             <div class="filter-section">
                 <label class="filter-section-title">Categories</label>
+                {% for i in category %}
                 <div class="filter-option">
-                    <input type="checkbox" id="cat-tech" name="category" value="tech" checked>
-                    <label for="cat-tech">Tech</label>
+                    <input type="checkbox" id="cat-tech" name="category" value="{{i.name}}" >
+                    <label for="cat-tech">{{i.name}}</label>
                 </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="cat-fiction" name="category" value="fiction" checked>
-                    <label for="cat-fiction">Fiction</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="cat-history" name="category" value="history">
-                    <label for="cat-history">History</label>
-                </div>
+                {% endfor %}
+                
             </div>
 
             <!-- Availability Filter -->
             <div class="filter-section">
                 <label class="filter-section-title">Availability</label>
                 <div class="filter-option">
-                    <input type="checkbox" id="avail-available" name="availability" value="available" checked>
+                    <input type="radio" id="avail-available" name="availability" value="available" checked>
                     <label for="avail-available">Available now</label>
                 </div>
                 <div class="filter-option">
-                    <input type="checkbox" id="avail-borrowed" name="availability" value="borrowed">
+                    <input type="radio" id="avail-borrowed" name="availability" value="borrowed">
                     <label for="avail-borrowed">Borrowed</label>
                 </div>
             </div>
@@ -71,35 +67,22 @@
             <!-- Author Filter -->
             <div class="filter-section">
                 <label class="filter-section-title">Author</label>
+                {% for i in author %}
                 <div class="filter-option">
-                    <input type="checkbox" id="author-asimov" name="author" value="isaac-asimov">
-                    <label for="author-asimov">Isaac Asimov</label>
+                    <input type="checkbox" id="author-asimov" name="author" value="{{i.name}}">
+                    <label for="author-asimov">{{i.name}}</label>
+                    
                 </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="author-dick" name="author" value="philip-k-dick">
-                    <label for="author-dick">Philip K. Dick</label>
-                </div>
-                <div class="filter-option">
-                    <input type="checkbox" id="author-clarke" name="author" value="arthur-c-clarke">
-                    <label for="author-clarke">Arthur C. Clarke</label>
-                </div>
+                 {% endfor %}
+               
+         
             </div>
 
-            <!-- Publication Year Filter -->
-            <div class="filter-section">
-                <label class="filter-section-title">Publication Year</label>
-                <div class="year-range-display">
-                    <span>1950</span>
-                    <span id="yearDisplay">2024</span>
-                </div>
-                <div class="publication-year-slider">
-                    <input type="range" id="yearSlider" min="1950" max="2024" value="2024" class="year-slider">
-                </div>
-            </div>
-
+           
             <!-- Apply Filters Button -->
             <button class="btn-apply-filters" id="applyFiltersBtn">Apply Filters</button>
         </aside>
+        </form>
 
         <!-- Main Content -->
         <section class="books-main-content">
@@ -134,7 +117,13 @@
                 <!-- Book Result Cards -->
                  {% for i in books %}
                 <div class="result-book-card" >
+                    {% if not i.status %}
                     <img src="{{i.image.url}}" alt="Foundation by Isaac Asimov">
+                    <div style="position: absolute; color:red;margin:-140px 0px 0px 55px;font-size: 30px;transform :rotate(-60deg);">booked</div>
+                    {% else %}
+                     <img src="{{i.image.url}}" alt="Foundation by Isaac Asimov">
+                    {% endif %}
+                    <!-- <img src="{{i.image.url}}" alt="Foundation by Isaac Asimov"> -->
                     <div class="result-book-header">
                         <span class="result-availability">stock : {{ i.stock }}</span>
                     </div>
