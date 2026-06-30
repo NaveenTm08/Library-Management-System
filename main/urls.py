@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('accounts.urls')),
     path('users/',include('library.urls')),
+    path('library/',include('liberyadmin.urls')),
     
     
 

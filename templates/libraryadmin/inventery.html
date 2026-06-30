@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Inventory | Nexas Library</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" />
+    <link rel="stylesheet" href="{% static 'assets/libraryadmin/inventery.css' %}" />
+  <body class="page-bg">
+    <div class="page-shell">
+      <div class="container-fluid px-4 py-5">
+        <div class="dashboard-card shadow-lg overflow-hidden">
+          <div class="row g-0">
+            <aside class="col-xl-3 col-lg-4 sidebar p-4 d-flex flex-column">
+              <div class="brand d-flex align-items-center gap-3 mb-4">
+                <span class="material-symbols-outlined brand-icon">library_books</span>
+                <div>
+                  <h5 class="mb-1">Nexas Admin</h5>
+                  <p class="text-muted mb-0">System v2.4.0</p>
+                </div>
+              </div>
+              <nav class="nav flex-column gap-2 mb-4">
+                <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                  <span class="material-symbols-outlined">dashboard</span>
+                  Dashboard
+                </a>
+                <a href="#" class="nav-link rounded-4 active d-flex align-items-center gap-3">
+                  <span class="material-symbols-outlined">menu_book</span>
+                  Books
+                </a>
+                <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                  <span class="material-symbols-outlined">group</span>
+                  Members
+                </a>
+                <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                  <span class="material-symbols-outlined">handshake</span>
+                  Borrowing
+                </a>
+                <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                  <span class="material-symbols-outlined">settings</span>
+                  Admin
+                </a>
+              </nav>
+              <div class="mt-auto secondary-links">
+                <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3 text-primary">
+                  <span class="material-symbols-outlined">analytics</span>
+                  Reports
+                </a>
+                <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3 text-primary">
+                  <span class="material-symbols-outlined">tune</span>
+                  Settings
+                </a>
+              </div>
+            </aside>
+
+            <main class="col-xl-9 col-lg-8 p-4 bg-white">
+              <div class="topbar d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4">
+                <div class="input-group search-input bg-white rounded-pill border border-1 border-secondary-subtle overflow-hidden">
+                  <span class="input-group-text bg-transparent border-0">
+                    <span class="material-symbols-outlined">search</span>
+                  </span>
+                  <input type="search" class="form-control border-0" placeholder="Global search..." aria-label="Search" />
+                </div>
+
+                <div class="d-flex align-items-center gap-3 flex-wrap">
+                  <button type="button" class="btn btn-white border rounded-4 icon-btn">
+                    <span class="material-symbols-outlined">notifications</span>
+                  </button>
+                  <div class="d-flex align-items-center gap-3 p-2 rounded-4 user-chip">
+                    <div class="avatar bg-primary text-white">LB</div>
+                    <div>
+                      <div class="fw-semibold">Librarian</div>
+                      <div class="text-muted small">Admin user</div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary rounded-4 px-4">Logout</button>
+                </div>
+              </div>
+
+              <div class="page-header mb-4">
+                <nav class="breadcrumb-wrap mb-3">
+                  <a href="#">Dashboard</a>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                  <a href="#">Books</a>
+                  <span class="material-symbols-outlined">chevron_right</span>
+                  <span class="text-muted">Edit Books</span>
+                </nav>
+
+                <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+                  <div>
+                    <h2 class="mb-1">Manage Inventory</h2>
+                    <p class="text-muted mb-0">Update and monitor your physical and digital book collection.</p>
+                  </div>
+                  <button type="button" class="btn btn-primary rounded-4 px-4 d-flex align-items-center gap-2">
+                    <span class="material-symbols-outlined">add</span>
+                    Add New Book
+                  </button>
+                </div>
+              </div>
+
+              <div class="filters-row d-flex flex-column flex-lg-row gap-3 align-items-stretch align-items-lg-center justify-content-between mb-4">
+                <div class="filter-input d-flex align-items-center gap-2 bg-white rounded-4 border border-1 border-secondary-subtle px-3 py-2">
+                  <span class="material-symbols-outlined">filter_list</span>
+                  <input type="search" class="form-control border-0" placeholder="Search by title, author, or ISBN..." aria-label="Search inventory" />
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-3 w-100 w-lg-auto">
+                  <div class="form-floating w-100">
+                    <select class="form-select rounded-4" id="categorySelect">
+                      <option selected>All Categories</option>
+                      <option>Fiction</option>
+                      <option>Technology</option>
+                      <option>History</option>
+                      <option>Science</option>
+                      <option>Biography</option>
+                    </select>
+                    <label for="categorySelect">Category</label>
+                  </div>
+                  <div class="form-floating w-100">
+                    <select class="form-select rounded-4" id="sortSelect">
+                      <option selected>Recently Added</option>
+                      <option>Alphabetical (A-Z)</option>
+                      <option>Copies: High to Low</option>
+                      <option>Copies: Low to High</option>
+                    </select>
+                    <label for="sortSelect">Sort by</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="table-wrap rounded-4 border border-1 border-secondary-subtle overflow-hidden shadow-sm">
+                <table class="table mb-0 align-middle inventory-table">
+                  <thead class="bg-white">
+                    <tr>
+                      <th scope="col">Cover</th>
+                      <th scope="col">Book Title</th>
+                      <th scope="col">ISBN</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Available</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><img class="cover-thumb rounded-3" src="https://via.placeholder.com/64x88/ced4da/495057?text=Cover" alt="The Modern Web Architect cover" /></td>
+                      <td>The Modern Web Architect</td>
+                      <td>978-3-16-148410-0</td>
+                      <td>Technology</td>
+                      <td>Sarah J. Hudson</td>
+                      <td>12</td>
+                      <td><span class="badge badge-available">Available</span></td>
+                      <td class="action-column">
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="View"><span class="material-symbols-outlined">visibility</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Edit"><span class="material-symbols-outlined">edit</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Delete"><span class="material-symbols-outlined">delete</span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><img class="cover-thumb rounded-3" src="https://via.placeholder.com/64x88/ced4da/495057?text=Cover" alt="History of Data Silos cover" /></td>
+                      <td>History of Data Silos</td>
+                      <td>978-0-262-13472-9</td>
+                      <td>History</td>
+                      <td>Marcus Thorne</td>
+                      <td>3</td>
+                      <td><span class="badge badge-lowstock">Low Stock</span></td>
+                      <td class="action-column">
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="View"><span class="material-symbols-outlined">visibility</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Edit"><span class="material-symbols-outlined">edit</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Delete"><span class="material-symbols-outlined">delete</span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><img class="cover-thumb rounded-3" src="https://via.placeholder.com/64x88/ced4da/495057?text=Cover" alt="Quantum Mechanics 101 cover" /></td>
+                      <td>Quantum Mechanics 101</td>
+                      <td>978-1-56619-909-4</td>
+                      <td>Science</td>
+                      <td>Dr. Alan Turing Jr.</td>
+                      <td>0</td>
+                      <td><span class="badge badge-outofstock">Out of Stock</span></td>
+                      <td class="action-column">
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="View"><span class="material-symbols-outlined">visibility</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Edit"><span class="material-symbols-outlined">edit</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Delete"><span class="material-symbols-outlined">delete</span></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><img class="cover-thumb rounded-3" src="https://via.placeholder.com/64x88/ced4da/495057?text=Cover" alt="Digital Renaissance cover" /></td>
+                      <td>Digital Renaissance</td>
+                      <td>978-0-13-149505-0</td>
+                      <td>Biography</td>
+                      <td>Leo DaVinci</td>
+                      <td>25</td>
+                      <td><span class="badge badge-available">Available</span></td>
+                      <td class="action-column">
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="View"><span class="material-symbols-outlined">visibility</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Edit"><span class="material-symbols-outlined">edit</span></button>
+                        <button type="button" class="btn btn-white action-btn rounded-circle" aria-label="Delete"><span class="material-symbols-outlined">delete</span></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 mt-4 text-muted small">
+                <div>Showing 1 to 4 of 42 results</div>
+                <div class="pagination-controls d-flex align-items-center gap-2">
+                  <button type="button" class="btn btn-white rounded-circle" disabled><span class="material-symbols-outlined">chevron_left</span></button>
+                  <button type="button" class="btn btn-white rounded-circle"><span class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+              </div>
+
+              <footer class="mt-5 text-center text-muted small">
+                <div class="fw-semibold mb-1">Nexas Library</div>
+                <div>© 2024 Nexas Library Management System. All rights reserved.</div>
+                <div class="footer-links mt-2">
+                  <a href="#">Privacy Policy</a>
+                  <span class="mx-2">•</span>
+                  <a href="#">Terms of Service</a>
+                  <span class="mx-2">•</span>
+                  <a href="#">System Status</a>
+                </div>
+              </footer>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/libraryadmin/inventery.js' %}"></script>
+  </body>
+</html>
