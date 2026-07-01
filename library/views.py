@@ -8,6 +8,7 @@ from django.db.models import Q
 # Create your views here.
 def dashboard(request):
     if request.user.is_authenticated:
+        
         return render(request,"user/dashboard.html")
     else:
         return redirect("/")

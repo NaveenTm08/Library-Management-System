@@ -1,0 +1,261 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overdue Books | Nexas Library</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0&display=swap" />
+    <link rel="stylesheet" href="{% static 'assets/libraryadmin/due_books.css'%}" />
+  </head>
+  <body class="page-bg">
+    <div class="container-fluid px-4 py-5">
+      <div class="dashboard-card mx-auto shadow-lg overflow-hidden">
+        <div class="row g-0">
+          <aside class="col-xl-3 col-lg-4 sidebar p-4 d-flex flex-column">
+            <div class="brand d-flex align-items-center gap-3 mb-4">
+              <span class="material-symbols-outlined brand-icon">menu_book</span>
+              <div>
+                <h5 class="mb-1">Nexas Admin</h5>
+                <p class="text-muted mb-0">System v2.4.0</p>
+              </div>
+            </div>
+            <nav class="nav flex-column gap-2 mb-4">
+              <a href="/library/" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+              </a>
+              <a href="/library/inventery/" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                <span class="material-symbols-outlined">book</span>
+                Catalog
+              </a>
+              <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                <span class="material-symbols-outlined">group</span>
+                Members
+              </a>
+              <a href="#" class="nav-link rounded-4 active d-flex align-items-center gap-3">
+                <span class="material-symbols-outlined">schedule</span>
+                Overdue
+              </a>
+              <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+              </a>
+            </nav>
+            <div class="mt-auto secondary-links">
+              <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3 text-primary">
+                <span class="material-symbols-outlined">analytics</span>
+                Reports
+              </a>
+              <a href="#" class="nav-link rounded-4 d-flex align-items-center gap-3 text-primary">
+                <span class="material-symbols-outlined">tune</span>
+                Support
+              </a>
+            </div>
+          </aside>
+
+          <main class="col-xl-9 col-lg-8 p-4 bg-white">
+            <div class="topbar d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4">
+              <div class="input-group search-input bg-white rounded-pill border border-1 border-secondary-subtle overflow-hidden">
+                <span class="input-group-text bg-transparent border-0">
+                  <span class="material-symbols-outlined">search</span>
+                </span>
+                <input type="search" class="form-control border-0" placeholder="Search overdue books or members..." aria-label="Search overdue" />
+              </div>
+              <div class="d-flex align-items-center gap-3 flex-wrap">
+                <button type="button" class="btn btn-white border rounded-4 icon-btn">
+                  <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <div class="d-flex align-items-center gap-3 p-2 rounded-4 user-chip">
+                  <div class="avatar bg-primary text-white">LB</div>
+                  <div>
+                    <div class="fw-semibold">Luna Brooks</div>
+                    <div class="text-muted small">Recovery Team</div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary rounded-4 px-4">Logout</button>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4 page-header">
+              <div>
+                <h2 class="mb-1">Overdue Books</h2>
+                <p class="text-muted mb-0">Track overdue returns, fines, and member follow-ups in one view.</p>
+              </div>
+              <button type="button" class="btn btn-outline-secondary rounded-4">Export Report</button>
+            </div>
+
+            <div class="row g-3 mb-4 stats-grid">
+              <div class="col-6 col-md-3">
+                <div class="stat-card p-4 rounded-4 border border-1 border-secondary-subtle h-100">
+                  <p class="text-muted mb-2">Total Overdue</p>
+                  <h3 class="mb-0">142</h3>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-card p-4 rounded-4 border border-1 border-secondary-subtle h-100">
+                  <p class="text-muted mb-2">Outstanding Fines</p>
+                  <h3 class="mb-0">$1,820</h3>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-card p-4 rounded-4 border border-1 border-secondary-subtle h-100">
+                  <p class="text-muted mb-2">Avg. Days Late</p>
+                  <h3 class="mb-0">8.4</h3>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="stat-card p-4 rounded-4 border border-1 border-secondary-subtle h-100">
+                  <p class="text-muted mb-2">Active Notifications</p>
+                  <h3 class="mb-0">27</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-row d-flex flex-column flex-lg-row gap-3 align-items-stretch align-items-lg-center justify-content-between mb-4">
+              <div class="search-filter d-flex align-items-center gap-2 bg-white rounded-4 border border-1 border-secondary-subtle px-3 py-2 flex-grow-1">
+                <span class="material-symbols-outlined">filter_list</span>
+                <input type="search" class="form-control border-0" placeholder="Filter by title, member, or status" />
+              </div>
+              <div class="d-flex gap-3 flex-wrap">
+                <div class="form-floating">
+                  <select class="form-select rounded-4" id="statusFilter">
+                    <option selected>All Status</option>
+                    <option>Overdue</option>
+                    <option>Pending</option>
+                    <option>Resolved</option>
+                  </select>
+                  <label for="statusFilter">Status</label>
+                </div>
+                <div class="form-floating">
+                  <select class="form-select rounded-4" id="sortFilter">
+                    <option selected>Due Date</option>
+                    <option>Days Late</option>
+                    <option>Fine Amount</option>
+                  </select>
+                  <label for="sortFilter">Sort by</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-card rounded-4 border border-1 border-secondary-subtle overflow-hidden shadow-sm mb-4">
+              <table class="table mb-0 align-middle overdue-table">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Book</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">Borrower</th>
+                    <th scope="col">Days Late</th>
+                    <th scope="col">Fine</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-3">
+                        <img src="https://via.placeholder.com/56x80/ced4da/495057?text=Book" alt="The Silent Patient" class="book-thumb rounded-3" />
+                        <div>
+                          <p class="mb-1 fw-semibold">The Silent Patient</p>
+                          <p class="text-muted small mb-0">Mystery</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Jul 13, 2024</td>
+                    <td>James Carter</td>
+                    <td>12</td>
+                    <td>$24</td>
+                    <td><span class="badge status-overdue">Overdue</span></td>
+                    <td class="action-column">
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Remind"><span class="material-symbols-outlined">email</span></button>
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Details"><span class="material-symbols-outlined">visibility</span></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-3">
+                        <img src="https://via.placeholder.com/56x80/ced4da/495057?text=Book" alt="Deep Work" class="book-thumb rounded-3" />
+                        <div>
+                          <p class="mb-1 fw-semibold">Deep Work</p>
+                          <p class="text-muted small mb-0">Productivity</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Jul 10, 2024</td>
+                    <td>Priya Nair</td>
+                    <td>15</td>
+                    <td>$30</td>
+                    <td><span class="badge status-overdue">Overdue</span></td>
+                    <td class="action-column">
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Remind"><span class="material-symbols-outlined">email</span></button>
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Details"><span class="material-symbols-outlined">visibility</span></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-3">
+                        <img src="https://via.placeholder.com/56x80/ced4da/495057?text=Book" alt="Becoming" class="book-thumb rounded-3" />
+                        <div>
+                          <p class="mb-1 fw-semibold">Becoming</p>
+                          <p class="text-muted small mb-0">Biography</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Jul 18, 2024</td>
+                    <td>Sophia Clarke</td>
+                    <td>7</td>
+                    <td>$14</td>
+                    <td><span class="badge status-pending">Pending</span></td>
+                    <td class="action-column">
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Remind"><span class="material-symbols-outlined">email</span></button>
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Details"><span class="material-symbols-outlined">visibility</span></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="d-flex align-items-center gap-3">
+                        <img src="https://via.placeholder.com/56x80/ced4da/495057?text=Book" alt="The Power of Habit" class="book-thumb rounded-3" />
+                        <div>
+                          <p class="mb-1 fw-semibold">The Power of Habit</p>
+                          <p class="text-muted small mb-0">Self Improvement</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Jul 20, 2024</td>
+                    <td>Omar Reyes</td>
+                    <td>5</td>
+                    <td>$10</td>
+                    <td><span class="badge status-overdue">Overdue</span></td>
+                    <td class="action-column">
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Remind"><span class="material-symbols-outlined">email</span></button>
+                      <button class="btn btn-white action-btn rounded-circle" aria-label="Details"><span class="material-symbols-outlined">visibility</span></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-muted small">
+              <div>Showing 1 to 4 of 27 overdue items</div>
+              <div class="pagination-controls d-flex align-items-center gap-2">
+                <button type="button" class="btn btn-white rounded-circle" disabled><span class="material-symbols-outlined">chevron_left</span></button>
+                <button type="button" class="btn btn-white rounded-4 px-3">1</button>
+                <button type="button" class="btn btn-white rounded-4 px-3">2</button>
+                <button type="button" class="btn btn-white rounded-4 px-3">3</button>
+                <button type="button" class="btn btn-white rounded-circle"><span class="material-symbols-outlined">chevron_right</span></button>
+              </div>
+            </div>
+
+            <footer class="mt-5 text-center text-muted small">
+              © 2024 Nexas Library Management System. All rights reserved. <a href="#">Privacy Policy</a> • <a href="#">Terms</a>
+            </footer>
+          </main>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets/libraryadmin/due_books.css'%}"></script>
+  </body>
+</html>

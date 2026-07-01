@@ -5,4 +5,7 @@ urlpatterns = [
     path("",views.dashboard),
     path("inventery/",views.inventery),
     path("members/",views.members),
+    path("addbooks/",views.addbooks),
+    path('addmembers/',views.addmembers),
+    path('duebooks/',views.duebooks),
 ]
