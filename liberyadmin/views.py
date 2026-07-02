@@ -1,4 +1,7 @@
 from django.shortcuts import render,redirect
+from django.core.paginator import Paginator
+
+from library.models import Book
 
 # Create your views here.
 
@@ -17,7 +20,12 @@ def dashboard(request):
 def inventery(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
-            return render(request,'libraryadmin/inventery.html')
+
+            books = Book.objects.all()
+            paginator = Paginator(books, 2) 
+            page_number = request.GET.get("page")
+            page_obj = paginator.get_page(page_number)
+            return render(request,'libraryadmin/inventery.html',{'page_obj':page_obj})
         else:
             return redirect("/")
     else:
@@ -62,4 +70,10 @@ def duebooks(request):
         else:
             return redirect("/")
     else:
+
         return redirect("/")
+    
+def bookdelete(request,bid):
+    book = Book.objects.get(id=bid)
+    book.delete()
+    return redirect("inventary")

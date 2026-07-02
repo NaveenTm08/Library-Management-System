@@ -9,6 +9,9 @@ from library.models import Book, BookCategory
 # Create your views here.
 def home(request):
     if request.user.is_authenticated:
+        user = request.user
+        if user.is_staff:
+            return redirect("libraryadmin")
         return redirect("dashboard")
     trendingbooks = Book.objects.all().order_by('-id')[:10]
     allbooks = Book.objects.all().order_by('?')
@@ -32,7 +35,7 @@ def login(request):
         user = authenticate(username=email, password=password)
         if user:
             account_login(request, user)    
-            return redirect("/users/dashboard/")
+            return redirect("/")
         else:
             error = "Invalid email or password"
             return render(request, "user/login.html", {"error": error})
